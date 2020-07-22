@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOsuPerformanceCalculator", "SimpleOsuPerformanceCalculator\SimpleOsuPerformanceCalculator.csproj", "{1AC0F8BF-1356-4861-8E92-34FB3E34066C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOsuPerformanceCalculator", "SimpleOsuPerformanceCalculator\SimpleOsuPerformanceCalculator.csproj", "{1AC0F8BF-1356-4861-8E92-34FB3E34066C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.Game", "osu\osu.Game\osu.Game.csproj", "{678272FB-866E-411D-B0B2-7D2DCD836BE7}"
 EndProject
@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.Game.Rulesets.Taiko", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.Game.Rulesets.Mania", "osu\osu.Game.Rulesets.Mania\osu.Game.Rulesets.Mania.csproj", "{A03C6720-F683-4CDA-BE15-A8FEFB0D3F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOsuPerformanceCalculator.Test", "SimpleOsuPerformanceCalculator.Test\SimpleOsuPerformanceCalculator.Test.csproj", "{C5B1358C-1ED6-4AD0-8DC8-42499B627585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOsuPerformanceCalculator.Test", "SimpleOsuPerformanceCalculator.Test\SimpleOsuPerformanceCalculator.Test.csproj", "{C5B1358C-1ED6-4AD0-8DC8-42499B627585}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4AE2AA31-8229-4E55-A315-6D02E57FA71C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
