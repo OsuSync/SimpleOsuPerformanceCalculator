@@ -6,6 +6,7 @@ using osu.Game.Rulesets.Difficulty;
 using osu.Game.Rulesets.Mania;
 using osu.Game.Rulesets.Osu;
 using osu.Game.Rulesets.Osu.Objects;
+using osu.Game.Rulesets.Scoring;
 using osu.Game.Rulesets.Taiko;
 using osu.Game.Scoring;
 using osu.Game.Scoring.Legacy;
@@ -73,15 +74,47 @@ namespace SimpleOsuPerformanceCalculator.Calculator
             Refresh();
         }
 
-        public void UpdateOsuScore(int n300, int n100, int n50, int miss, double acc, int maxCombo)
+        public void UpdateOsuScore(int? n300, int? n100, int? n50, int? miss, double? acc, int? maxCombo)
         {
-            Score.MaxCombo = maxCombo;
-            Score.SetCount300(n300);
-            Score.SetCount100(n100);
-            Score.SetCount50(n50);
-            Score.SetCountMiss(miss);
-            Score.Accuracy = acc;
-            Score.MaxCombo = maxCombo;
+            if (n300.HasValue) Score.SetCount300(n300.Value);
+            if (n100.HasValue) Score.SetCount100(n100.Value);
+            if (n50.HasValue) Score.SetCount50(n50.Value);
+            if (miss.HasValue) Score.SetCountMiss(miss.Value);
+            if (acc.HasValue) Score.Accuracy = acc.Value;
+            if (maxCombo.HasValue) Score.MaxCombo = maxCombo.Value;
+            Refresh();
+        }
+
+        public void UpdateManiaScore(long? score, int? perfect, int? great, int? good, int? ok, int? meh, int? miss, double? acc, int? maxCombo)
+        {
+            if (perfect.HasValue) Score.Statistics[HitResult.Perfect] = perfect.Value;
+            if (ok.HasValue) Score.Statistics[HitResult.Ok] = ok.Value;
+            if (good.HasValue) Score.Statistics[HitResult.Good] = good.Value;
+            if (great.HasValue) Score.Statistics[HitResult.Great] = great.Value;
+            if (meh.HasValue) Score.Statistics[HitResult.Meh] = meh.Value;
+            if (miss.HasValue) Score.SetCountMiss(miss.Value);
+            if (score.HasValue) Score.TotalScore = score.Value;
+            if (acc.HasValue) Score.Accuracy = acc.Value;
+            if (maxCombo.HasValue) Score.MaxCombo = maxCombo.Value;
+            Refresh();
+        }
+
+        public void UpdateTaikoScore(int? n300, int? n100, int? n50, int? miss)
+        {
+            if (n300.HasValue) Score.SetCount300(n300.Value);
+            if (n100.HasValue) Score.SetCount100(n100.Value);
+            if (n50.HasValue) Score.SetCount50(n50.Value);
+            if (miss.HasValue) Score.SetCountMiss(miss.Value);
+            Refresh();
+        }
+
+        public void UpdateCatchScore(int? perfect, int? largeTickHit, int? smallTickHit, int? smallTickMiss, int? miss)
+        {
+            if (perfect.HasValue) Score.SetCount300(perfect.Value);
+            if (largeTickHit.HasValue) Score.Statistics[HitResult.LargeTickHit] = largeTickHit.Value;
+            if (smallTickHit.HasValue) Score.Statistics[HitResult.SmallTickHit] = smallTickHit.Value;
+            if (smallTickMiss.HasValue) Score.Statistics[HitResult.SmallTickMiss] = smallTickMiss.Value;
+            if (miss.HasValue) Score.SetCountMiss(miss.Value);
             Refresh();
         }
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <RepositoryUrl>https://github.com/OsuSync/SimpleOsuPerformanceCalculator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -50,21 +50,22 @@
         </PackageReference>
     </ItemGroup>
 
-    <Target Name="ILRepack" AfterTargets="Build">
 
-        <PropertyGroup>
-            <WorkingDirectory>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)</WorkingDirectory>
-        </PropertyGroup>
+	<Target Name="ILRepack" AfterTargets="Build">
 
-        <ItemGroup>
-            <InputAssemblies Include="$(AssemblyName).dll" />
-            <InputAssemblies Include="osu.Game.dll" />
-            <InputAssemblies Include="osu.Game.Rulesets.Catch.dll" />
-            <InputAssemblies Include="osu.Game.Rulesets.Mania.dll" />
-            <InputAssemblies Include="osu.Game.Rulesets.Osu.dll" />
-            <InputAssemblies Include="osu.Game.Rulesets.Taiko.dll" />
-        </ItemGroup>
+		<PropertyGroup>
+			<WorkingDirectory>$(MSBuildThisFileDirectory)bin\$(Configuration)\$(TargetFramework)</WorkingDirectory>
+		</PropertyGroup>
 
-        <ILRepack OutputType="$(OutputType)" MainAssembly="$(AssemblyName).dll" OutputAssembly="$(AssemblyName).dll" InputAssemblies="@(InputAssemblies)" WorkingDirectory="$(WorkingDirectory)" />
-    </Target>
+		<ItemGroup>
+			<InputAssemblies Include="$(AssemblyName).dll" />
+			<InputAssemblies Include="osu.Game.dll" />
+			<InputAssemblies Include="osu.Game.Rulesets.Catch.dll" />
+			<InputAssemblies Include="osu.Game.Rulesets.Mania.dll" />
+			<InputAssemblies Include="osu.Game.Rulesets.Osu.dll" />
+			<InputAssemblies Include="osu.Game.Rulesets.Taiko.dll" />
+		</ItemGroup>
+
+		<ILRepack OutputType="$(OutputType)" MainAssembly="$(AssemblyName).dll" OutputAssembly="$(AssemblyName).dll" InputAssemblies="@(InputAssemblies)" WorkingDirectory="$(WorkingDirectory)" />
+	</Target>
 </Project>
