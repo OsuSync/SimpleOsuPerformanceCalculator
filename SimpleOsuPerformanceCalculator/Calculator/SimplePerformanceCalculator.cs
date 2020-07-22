@@ -43,6 +43,7 @@ namespace SimpleOsuPerformanceCalculator.Calculator
         private ScoreInfo Score { get; set; }
         public double Performance { get; private set; }
         public int MaxCombo { get; private set; }
+        public int Max300 { get; private set; }
         private Ruleset Ruleset { get; }
         public SupportModes Mode { get; private set; }
         public SimplePerformanceCalculator(SupportModes mode, string beatmapFile)
@@ -59,10 +60,10 @@ namespace SimpleOsuPerformanceCalculator.Calculator
 
         private void RefreshMaxCombo(IBeatmap beatmap)
         {
-            MaxCombo = beatmap.HitObjects.Count;
+            Max300 = beatmap.HitObjects.Count;
             if (Mode == SupportModes.Osu)
             {
-                MaxCombo += beatmap.HitObjects.OfType<Slider>().Sum(s => s.NestedHitObjects.Count - 1);
+                MaxCombo = Max300 + beatmap.HitObjects.OfType<Slider>().Sum(s => s.NestedHitObjects.Count - 1);
             }
         } 
 
@@ -113,11 +114,12 @@ namespace SimpleOsuPerformanceCalculator.Calculator
                 .GetField("Attributes", BindingFlags.Instance | BindingFlags.NonPublic)
                 .SetValue(LazerCalculator, nextAttributes);
 
+            RefreshMaxCombo(CurrentPlayingBeatmap);
+
             LazerCalculator.GetType()
                 .GetField("countHitCircles", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(LazerCalculator, CurrentPlayingBeatmap.HitObjects.Count);
+                .SetValue(LazerCalculator, Max300);
 
-            RefreshMaxCombo(CurrentPlayingBeatmap);
             LazerCalculator.GetType()
                 .GetField("beatmapMaxCombo", BindingFlags.Instance | BindingFlags.NonPublic)
                 .SetValue(LazerCalculator, MaxCombo);
