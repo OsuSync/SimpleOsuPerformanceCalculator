@@ -9,13 +9,13 @@ using osu.Game.Rulesets.Osu.Objects;
 using osu.Game.Rulesets.Taiko;
 using osu.Game.Scoring;
 using osu.Game.Scoring.Legacy;
-using OsuPerformace.OsuBeatmap;
+using SimpleOsuPerformanceCalculator.OsuBeatmap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace OsuPerformace.Calculator
+namespace SimpleOsuPerformanceCalculator.Calculator
 {
     public enum SupportModes
     {

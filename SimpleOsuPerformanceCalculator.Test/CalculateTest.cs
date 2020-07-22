@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using OsuPerformace.Calculator;
+using SimpleOsuPerformanceCalculator.Calculator;
 using System;
 using System.Diagnostics;
 

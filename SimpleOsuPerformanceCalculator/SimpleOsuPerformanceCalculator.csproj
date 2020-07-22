@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <RepositoryUrl>https://github.com/OsuSync/SimpleOsuPerformanceCalculator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -44,7 +44,10 @@
   </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.1" />
+        <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.1">
+          <PrivateAssets>All</PrivateAssets>
+          <NoWarn>All</NoWarn>
+        </PackageReference>
     </ItemGroup>
 
     <Target Name="ILRepack" AfterTargets="Build">
@@ -54,6 +57,7 @@
         </PropertyGroup>
 
         <ItemGroup>
+            <InputAssemblies Include="$(AssemblyName).dll" />
             <InputAssemblies Include="osu.Game.dll" />
             <InputAssemblies Include="osu.Game.Rulesets.Catch.dll" />
             <InputAssemblies Include="osu.Game.Rulesets.Mania.dll" />

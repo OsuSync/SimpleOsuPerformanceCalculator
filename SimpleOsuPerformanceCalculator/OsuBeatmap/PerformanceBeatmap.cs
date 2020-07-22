@@ -6,7 +6,7 @@ using osu.Game.Rulesets.Objects;
 using System.Collections.Generic;
 using System.IO;
 
-namespace OsuPerformace.OsuBeatmap
+namespace SimpleOsuPerformanceCalculator.OsuBeatmap
 {
     public class PerformanceBeatmap : WorkingBeatmap
     {
